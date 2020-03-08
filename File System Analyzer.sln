@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "File System Analyzer", "File System Analyzer\File System Analyzer.csproj", "{7E34C9A5-19A6-491B-A317-85015CDCDEA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Megamind.IO.FileSystem", "..\Megamind.IO.FileSystem\Megamind.IO.FileSystem.csproj", "{9CBDBFE1-929F-43C9-BC92-0CD9AB80268A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Megamind.IO.FileSystem", "..\Megamind.IO.FileSystem\Megamind.IO.FileSystem.csproj", "{9CBDBFE1-929F-43C9-BC92-0CD9AB80268A}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "File System Analyzer Setup", "File System Analyzer Setup\File System Analyzer Setup.vdproj", "{EEF4C555-5EE5-4E2D-A4A0-3E991BF4D5E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{9CBDBFE1-929F-43C9-BC92-0CD9AB80268A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CBDBFE1-929F-43C9-BC92-0CD9AB80268A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CBDBFE1-929F-43C9-BC92-0CD9AB80268A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF4C555-5EE5-4E2D-A4A0-3E991BF4D5E4}.Debug|Any CPU.ActiveCfg = Debug
+		{EEF4C555-5EE5-4E2D-A4A0-3E991BF4D5E4}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

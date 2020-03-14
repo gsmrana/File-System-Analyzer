@@ -46,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
-        "OwnerKey" = "8:_F8B376EC06EE39B5FEB3286BAA18FE43"
+        "OwnerKey" = "8:_C173A9BEF5B54438F0E7DF3E0A435C24"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,7 +57,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F8B376EC06EE39B5FEB3286BAA18FE43"
+        "MsmKey" = "8:_C173A9BEF5B54438F0E7DF3E0A435C24"
         "OwnerKey" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -65,6 +65,12 @@
         {
         "MsmKey" = "8:_FF48DFBC7CCAF7987268D54F84DA9873"
         "OwnerKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -97,12 +103,6 @@
         "OwnerKey" = "8:_BE97A83CDC3B24D0D246F1D0E4E93505"
         "MsmSig" = "8:_UNDEFINED"
         }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -121,6 +121,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -137,6 +145,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -290,14 +314,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F8B376EC06EE39B5FEB3286BAA18FE43"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C173A9BEF5B54438F0E7DF3E0A435C24"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Megamind.IO.FileSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F8B376EC06EE39B5FEB3286BAA18FE43"
+                    "_C173A9BEF5B54438F0E7DF3E0A435C24"
                     {
                     "Name" = "8:Megamind.IO.FileSystem.dll"
                     "Attributes" = "3:512"
@@ -355,6 +379,29 @@
         }
         "FileType"
         {
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_7573BBA63AF74561975C92640B34C715"
+            {
+            "Name" = "8:Disk Image Files"
+            "Description" = "8:"
+            "Extensions" = "8:img"
+            "MIME" = "8:"
+            "Icon" = "8:"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_E7C1A5E60B8C42D9A964D7E1507465D2"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
         }
         "Folder"
         {
@@ -420,7 +467,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:File System Analyzer"
         "ProductCode" = "8:{DAD29C67-C4A2-42ED-86F0-81ED1A41368F}"
-        "PackageCode" = "8:{312352FA-E9D9-4495-8616-BD28504D1356}"
+        "PackageCode" = "8:{8BB0C0AA-A541-4F3C-A61B-45D7F6D406A1}"
         "UpgradeCode" = "8:{3BDC434F-E7EA-4412-8E1C-D707F55F32B2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -955,7 +1002,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_47FB47988E834CAB8BAD0FAA95AF436A"
             {
-            "SourcePath" = "8:..\\File System Analyzer\\obj\\Debug\\File System Analyzer.exe"
+            "SourcePath" = "8:..\\File System Analyzer\\obj\\Release\\File System Analyzer.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E791065CF5DD4347BF009281793FA24E"

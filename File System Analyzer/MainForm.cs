@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Megamind.IO.FileSystem;
+using System.Reflection;
 
 namespace File_System_Analyzer
 {
@@ -87,6 +88,11 @@ namespace File_System_Analyzer
             try
             {
                 ReloadDiskNames();
+                var args = Environment.GetCommandLineArgs();
+                if (args.Length > 1)
+                {
+                    TryOpenFileSystem(args[1]);
+                }
             }
             catch (Exception ex)
             {
@@ -180,8 +186,11 @@ namespace File_System_Analyzer
 
         void DisplayStorageName(string name)
         {
-            var sname = string.Format("Storage: {0}", name);
-            Invoke(new MethodInvoker(() => { toolStripStatusStorage.Text = sname; }));
+            Invoke(new MethodInvoker(() =>
+            {
+                Text = string.Format("{0} - {1}", name, Assembly.GetEntryAssembly().GetName().Name);
+                toolStripStatusStorage.Text = string.Format("Storage: {0}", name);
+            }));
         }
 
         void DisplayPartitionStatus(FileSystemBase partition)
@@ -281,25 +290,60 @@ namespace File_System_Analyzer
             }
         }
 
-        void OpenDiskFileSystem()
+        void TryOpenFileSystem(string filename)
         {
-            if (_fileManager != null) _fileManager.Close();
+            try
+            {
+                treeView1.Nodes.Clear();
+                listView1.Items.Clear();
+                _selectedfile = filename;
+                if (_fileManager != null)
+                    _fileManager.Close();
+            }
+            catch (Exception ex)
+            {
+                PopupException(ex.Message);
+            }
 
-            IStorageIO storage;
-            if (_selectedfile.StartsWith(@"\\.\"))
-                storage = new DiskIO(_selectedfile);
-            else storage = new DiskImageIO(_selectedfile);
+            Task.Factory.StartNew(new Action(() =>
+            {
+                try
+                {
+                    IStorageIO storage;
+                    string displayname;
+                    if (_selectedfile.StartsWith(@"\\.\"))
+                    {
+                        displayname = _selectedfile;
+                        AppendEventLog("\r\nReading Physical Drive: " + displayname);
+                        storage = new DiskIO(_selectedfile);
+                    }
+                    else
+                    {
+                        displayname = Path.GetFileName(filename);
+                        AppendEventLog("\r\nReading Disk Image: " + displayname);
+                        storage = new DiskImageIO(_selectedfile);
+                    }
 
-            _fileManager = new FileManager(storage);
-            _fileManager.OnEventLog += FileSystem_OnEventLog;
-            _fileManager.OnProgress += FileSystem_OnProgress;
-            _fileManager.Open();
-            foreach (var item in _fileManager.Partitions)
-                item.IncludeDeletedEntry = _showdelentry;
-            DisplayPartitionTreeView(_fileManager.Partitions);
-            if (_fileManager.Partitions.Count > 0)
-                ReadPartitionRoot(0);
-            else throw new Exception("Error: No Partition Found!");
+                    DisplayStorageName(displayname);
+                    _fileManager = new FileManager(storage);
+                    _fileManager.OnEventLog += FileSystem_OnEventLog;
+                    _fileManager.OnProgress += FileSystem_OnProgress;
+                    _fileManager.Open();
+                    foreach (var item in _fileManager.Partitions)
+                        item.IncludeDeletedEntry = _showdelentry;
+                    DisplayPartitionTreeView(_fileManager.Partitions);
+                    if (_fileManager.Partitions.Count > 0)
+                        ReadPartitionRoot(0);
+                    else throw new Exception("Error: No Partition Found!");
+                }
+                catch (Exception ex)
+                {
+                    var info = ex.Message;
+                    if (ex.Message.Contains("denied"))
+                        info = ex.Message + "\r\rRun as Administrator for physical drive access!";
+                    PopupException(info);
+                }
+            }));
         }
 
         public void ReadPartitionRoot(int partition)
@@ -313,6 +357,9 @@ namespace File_System_Analyzer
 
         public void GetDisplayDirEntries(int partition, int startcluster)
         {
+            if (_fileManager.Partitions[partition].BootSector.FsType == FsType.Unknown)
+                throw new Exception("File System Unknown!");
+
             _files = _fileManager.Partitions[partition].GetDirEntries(startcluster).ToList();
             DisplayFileListView(_files);
         }
@@ -341,7 +388,7 @@ namespace File_System_Analyzer
         {
             try
             {
-                if (e.Percent == _prevpercent) 
+                if (e.Percent == _prevpercent)
                     return;
                 DisplayProgress(e.Percent);
                 _prevpercent = e.Percent;
@@ -470,13 +517,7 @@ namespace File_System_Analyzer
                 ofd.Filter = "DiskImage Files|*.img|All Files (*.*)|*.*";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    _selectedfile = ofd.FileName;
-                    treeView1.Nodes.Clear();
-                    listView1.Items.Clear();
-                    var name = Path.GetFileName(_selectedfile);
-                    AppendEventLog("Reading Disk Image: " + name);
-                    DisplayStorageName(name);
-                    OpenDiskFileSystem();
+                    TryOpenFileSystem(ofd.FileName);
                 }
             }
             catch (Exception ex)
@@ -545,27 +586,18 @@ namespace File_System_Analyzer
 
         private void ToolStripButtonOpen_Click(object sender, EventArgs e)
         {
-            var idx = comboBoxStorageName.SelectedIndex;
-            if (idx >= 0) _selectedfile = DiskImageFileNames[idx];
-            else _selectedfile = comboBoxStorageName.Text;
-            treeView1.Nodes.Clear();
-            listView1.Items.Clear();
-            Task.Factory.StartNew(new Action(() =>
+            try
             {
-                try
-                {
-                    AppendEventLog("\r\nReading File System: " + _selectedfile);
-                    DisplayStorageName(_selectedfile);
-                    OpenDiskFileSystem();
-                }
-                catch (Exception ex)
-                {
-                    var info = ex.Message;
-                    if (ex.Message.Contains("denied"))
-                        info = ex.Message + "\r\rRun as Administrator for physical drive access!";
-                    PopupException(info);
-                }
-            }));
+                string filename;
+                var idx = comboBoxStorageName.SelectedIndex;
+                if (idx >= 0) filename = DiskImageFileNames[idx];
+                else filename = comboBoxStorageName.Text;
+                TryOpenFileSystem(filename);
+            }
+            catch (Exception ex)
+            {
+                PopupException(ex.Message);
+            }
         }
 
         private void ToolStripButtonInfo_Click(object sender, EventArgs e)
@@ -995,6 +1027,25 @@ namespace File_System_Analyzer
 
 
         #endregion
+
+        #region File Drag and Drop
+
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                TryOpenFileSystem(files[0]);
+            }
+        }
+
+        #endregion
+
     }
 
     #region Internal Class

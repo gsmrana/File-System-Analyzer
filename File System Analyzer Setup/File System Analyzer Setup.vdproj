@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_2752F3A46E640F251BE7C6934679A9D6"
+        "OwnerKey" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -46,19 +52,13 @@
         "Entry"
         {
         "MsmKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
-        "OwnerKey" = "8:_C173A9BEF5B54438F0E7DF3E0A435C24"
+        "OwnerKey" = "8:_2752F3A46E640F251BE7C6934679A9D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_BE97A83CDC3B24D0D246F1D0E4E93505"
         "OwnerKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C173A9BEF5B54438F0E7DF3E0A435C24"
-        "OwnerKey" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -128,6 +128,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -190,6 +198,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2752F3A46E640F251BE7C6934679A9D6"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Megamind.IO.FileSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2752F3A46E640F251BE7C6934679A9D6"
+                    {
+                    "Name" = "8:Megamind.IO.FileSystem.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Megamind.IO.FileSystem.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E791065CF5DD4347BF009281793FA24E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4F13C4994E4D5FE9DC1ABD4B410928FC"
             {
             "AssemblyRegister" = "3:1"
@@ -297,37 +336,6 @@
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Tracing.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E791065CF5DD4347BF009281793FA24E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C173A9BEF5B54438F0E7DF3E0A435C24"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Megamind.IO.FileSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C173A9BEF5B54438F0E7DF3E0A435C24"
-                    {
-                    "Name" = "8:Megamind.IO.FileSystem.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Megamind.IO.FileSystem.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E791065CF5DD4347BF009281793FA24E"
@@ -484,8 +492,8 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:https://github.com/gsmrana"
-        "ARPPRODUCTICON" = "8:"
-        "ARPIconIndex" = "3:0"
+        "ARPPRODUCTICON" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
+        "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
@@ -1002,7 +1010,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_47FB47988E834CAB8BAD0FAA95AF436A"
             {
-            "SourcePath" = "8:..\\File System Analyzer\\obj\\Release\\File System Analyzer.exe"
+            "SourcePath" = "8:..\\File System Analyzer\\obj\\Debug\\File System Analyzer.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E791065CF5DD4347BF009281793FA24E"

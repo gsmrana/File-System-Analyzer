@@ -1,20 +1,18 @@
-﻿using File_System_Analyzer.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Design;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Megamind.IO.FileSystem;
-using System.Reflection;
 
 namespace File_System_Analyzer
 {
@@ -59,12 +57,12 @@ namespace File_System_Analyzer
         {
             try
             {
-                imageList1.Images.Add(Resources.FileIcon1);
-                imageList1.Images.Add(Resources.FileIcon2);
-                imageList1.Images.Add(Resources.DirIcon1);
-                imageList1.Images.Add(Resources.DirIcon2);
-                imageList1.Images.Add(Resources.DiskIcon1);
-                imageList1.Images.Add(Resources.HardDisk);
+                imageList1.Images.Add(Properties.Resources.FileIcon1);
+                imageList1.Images.Add(Properties.Resources.FileIcon2);
+                imageList1.Images.Add(Properties.Resources.DirIcon1);
+                imageList1.Images.Add(Properties.Resources.DirIcon2);
+                imageList1.Images.Add(Properties.Resources.DiskIcon1);
+                imageList1.Images.Add(Properties.Resources.HardDisk);
 
                 listView1.Columns.Add("Filename", 290);
                 listView1.Columns.Add("Attribute", 100);
@@ -543,7 +541,7 @@ namespace File_System_Analyzer
                 tableview.ColumnHeaders.Add(new ColumnHeader("Name", 150));
                 tableview.ColumnHeaders.Add(new ColumnHeader("Capacity", 100));
                 tableview.ColumnHeaders.Add(new ColumnHeader("Description", 200));
-                tableview.ColumnHeaders.Add(new ColumnHeader("Model", 280));
+                tableview.ColumnHeaders.Add(new ColumnHeader("Model", 300));
                 foreach (var item in disklist)
                 {
                     var sizestr = FileSystemBase.GetFormatedSizeString(long.Parse(item.TotalSize));
@@ -651,15 +649,27 @@ namespace File_System_Analyzer
             }
         }
 
+        private void UpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show("Do you want to browse release page?", "Confirmation",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    Process.Start("https://github.com/gsmrana/File-System-Analyzer/releases");
+            }
+            catch (Exception ex)
+            {
+                PopupException(ex.Message);
+            }
+        }
+
         private void HelpToolStripButtonAbout_Click(object sender, EventArgs e)
         {
             try
             {
-                var info = Application.ProductName;
-                info += "\rVersion " + Application.ProductVersion;
-                info += "\rDeveloper GSM Rana";
-                info += "\rhttps://github.com/gsmrana";
-                MessageBox.Show(info, "Credit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var aboutbox = new AboutBox();
+                aboutbox.ShowDialog();
             }
             catch (Exception ex)
             {

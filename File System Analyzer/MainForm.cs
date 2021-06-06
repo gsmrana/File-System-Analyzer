@@ -20,7 +20,26 @@ namespace File_System_Analyzer
     {
         #region Const
 
+        // 0 and 1 cluster number doesn't exist in FAT FS
+        const int ValidClusterNumberStart = 2;
         readonly string TestImagesDir = @"..\..\..\ImageFiles";
+
+        #endregion
+
+        #region Enum
+
+        enum EntryIcon
+        {
+            FileIconDefault,
+            FileIconError,
+            FileIconBlank,
+            FileIconOkay,
+            FileIconText,
+            DirIconDefault,
+            DirIconSystem,
+            DriveIconDefault,
+            HardDiskIconDefault
+        }
 
         #endregion
 
@@ -35,13 +54,13 @@ namespace File_System_Analyzer
         FileManager _fileManager;
         List<FatEntry> _files = new List<FatEntry>();
         readonly List<string> DiskImageFileNames = new List<string>();
-        readonly Dictionary<int, int> EntryIconMap = new Dictionary<int, int>()
+        readonly Dictionary<EntryAttributes, EntryIcon> EntryIconMap = new Dictionary<EntryAttributes, EntryIcon>()
         {
-            { (int)EntryAttributes.Archive, 1},
-            { (int)EntryAttributes.Directory, 2},
-            { (int)EntryAttributes.HiddenSystemDir, 3},
-            { (int)EntryAttributes.VolumeLabel, 4},
-            { (int)EntryAttributes.Device, 4},
+            { EntryAttributes.Archive, EntryIcon.FileIconOkay},
+            { EntryAttributes.Directory, EntryIcon.DirIconDefault},
+            { EntryAttributes.HiddenSystemDir, EntryIcon.DirIconSystem},
+            { EntryAttributes.VolumeLabel, EntryIcon.DriveIconDefault},
+            { EntryAttributes.Device, EntryIcon.HardDiskIconDefault},
         };
 
         #endregion
@@ -57,12 +76,16 @@ namespace File_System_Analyzer
         {
             try
             {
-                imageList1.Images.Add(Properties.Resources.FileIcon1);
-                imageList1.Images.Add(Properties.Resources.FileIcon2);
-                imageList1.Images.Add(Properties.Resources.DirIcon1);
-                imageList1.Images.Add(Properties.Resources.DirIcon2);
-                imageList1.Images.Add(Properties.Resources.DiskIcon1);
-                imageList1.Images.Add(Properties.Resources.HardDisk);
+                // Need to maintain the sequence with EntryIcon enumeration
+                imageList1.Images.Add(Properties.Resources.FileIconDefault);
+                imageList1.Images.Add(Properties.Resources.FileIconError);
+                imageList1.Images.Add(Properties.Resources.FileIconBlank);
+                imageList1.Images.Add(Properties.Resources.FileIconOkay);
+                imageList1.Images.Add(Properties.Resources.FileIconText);
+                imageList1.Images.Add(Properties.Resources.DirIconDefault);
+                imageList1.Images.Add(Properties.Resources.DirIconSystem);
+                imageList1.Images.Add(Properties.Resources.DriveIconDefault);
+                imageList1.Images.Add(Properties.Resources.HardDiskIconDefault);
 
                 listView1.Columns.Add("Filename", 290);
                 listView1.Columns.Add("Attribute", 100);
@@ -134,8 +157,8 @@ namespace File_System_Analyzer
                 var disk = new TreeNode()
                 {
                     Text = "Disk",
-                    ImageIndex = 5,
-                    SelectedImageIndex = 5
+                    ImageIndex = (int)EntryIcon.HardDiskIconDefault,
+                    SelectedImageIndex = (int)EntryIcon.HardDiskIconDefault
                 };
                 treeView1.Nodes.Add(disk);
                 for (int i = 0; i < partitions.Count; i++)
@@ -144,8 +167,8 @@ namespace File_System_Analyzer
                     {
                         Text = "Partition" + i,
                         Tag = i,
-                        ImageIndex = 4,
-                        SelectedImageIndex = 4
+                        ImageIndex = (int)EntryIcon.DriveIconDefault,
+                        SelectedImageIndex = (int)EntryIcon.DriveIconDefault
                     };
                     disk.Nodes.Add(node1);
                 }
@@ -159,14 +182,46 @@ namespace File_System_Analyzer
             var lvis = new List<ListViewItem>();
             foreach (var file in files)
             {
+                var entryAttribute = (EntryAttributes)file.Attribute;
                 var lvi = new ListViewItem(file.FullName);
-                lvi.SubItems.Add(((EntryAttributes)file.Attribute).ToString());
+                lvi.SubItems.Add(entryAttribute.ToString());
                 lvi.SubItems.Add("0x" + file.StartCluster.ToString("X8"));
                 lvi.SubItems.Add(file.FileSizeString);
                 lvi.SubItems.Add(file.EntryIndex.ToString());
-                lvi.ImageIndex = 0;
-                if (EntryIconMap.ContainsKey(file.Attribute))
-                    lvi.ImageIndex = EntryIconMap[file.Attribute];
+                lvi.ImageIndex = (int)EntryIcon.FileIconDefault;
+
+                // search for pre-map icon
+                if (EntryIconMap.ContainsKey(entryAttribute))
+                {
+                    lvi.ImageIndex = (int)EntryIconMap[entryAttribute];
+                }
+
+                // check for empty file
+                if (entryAttribute == EntryAttributes.Archive && file.FileSize == 0)
+                {
+                    lvi.ImageIndex = (int)EntryIcon.FileIconBlank;
+                }
+
+                // check for invalid file entry
+                if (entryAttribute == EntryAttributes.Archive)
+                {
+                    long invalidCluster = ClusterNum.MaxExFAT;
+                    long maxValidSize = int.MaxValue;
+                    if (file.Partition != null)
+                    {
+                        var bs = file.Partition.BootSector;
+                        invalidCluster = bs.BadClusterFlagConst;
+                        maxValidSize = bs.EofClusterFlagConst * bs.ClusterSizeInBytes;
+                    }
+
+                    if (((uint)file.StartCluster < ValidClusterNumberStart) ||
+                       ((uint)file.StartCluster >= invalidCluster) ||
+                       ((uint)file.FileSize >= maxValidSize))
+                    {
+                        lvi.ImageIndex = (int)EntryIcon.FileIconError;
+                    }
+                }
+
                 lvis.Add(lvi);
             }
 
@@ -364,11 +419,18 @@ namespace File_System_Analyzer
 
         public string CopyFatFileToLocal(FatEntry srcfile, string destdir)
         {
+            if (srcfile.StartCluster < ValidClusterNumberStart)
+            {
+                AppendEventLog("FileCopy => " + srcfile.FullName + " - Invalid Start Cluster!");
+                MessageBox.Show("Invalid Start Cluster!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
             if (srcfile.FileSize <= 0)
             {
-                AppendEventLog("FileCopy => " + srcfile.FullName + " - Invalid File Size!");
-                MessageBox.Show("Invalid File Size!", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AppendEventLog("FileCopy => " + srcfile.FullName + " - Invalid file size or empty!");
+                MessageBox.Show("Invalid file size or empty!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return string.Empty;
             }
             var dest = Path.Combine(destdir, srcfile.FullName);
@@ -949,9 +1011,16 @@ namespace File_System_Analyzer
         {
             if (listView1.SelectedIndices.Count <= 0) return;
             var file = _files[listView1.SelectedIndices[0]];
+
+            if (file.StartCluster < ValidClusterNumberStart)
+            {
+                AppendEventLog("Error: FileView => " + file.FullName + " - Invalid Start Cluster!");
+                return;
+            }
+
             if (file.FileSize <= 0)
             {
-                AppendEventLog("Error: FileView => " + file.FullName + " - Invalid File Size!");
+                AppendEventLog("Error: FileView => " + file.FullName + " - Invalid file size or empty!");
                 return;
             }
 

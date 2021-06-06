@@ -118,22 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DirIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\diricon1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DirIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DirIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DirIcon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\diricon2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DirIconSystem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DirIconSystem.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DiskIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\diskicon1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DriveIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DriveIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fileicon1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FileIconBlank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileIconBlank.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileIcon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fileicon2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FileIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HardDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\HardDisk.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FileIconError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileIconError.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileIconOkay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileIconOkay.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileIconText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileIconText.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HardDiskIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HardDiskIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

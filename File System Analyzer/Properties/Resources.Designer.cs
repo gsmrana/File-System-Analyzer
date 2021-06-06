@@ -63,9 +63,9 @@ namespace File_System_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon DirIcon1 {
+        internal static System.Drawing.Icon DirIconDefault {
             get {
-                object obj = ResourceManager.GetObject("DirIcon1", resourceCulture);
+                object obj = ResourceManager.GetObject("DirIconDefault", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace File_System_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon DirIcon2 {
+        internal static System.Drawing.Icon DirIconSystem {
             get {
-                object obj = ResourceManager.GetObject("DirIcon2", resourceCulture);
+                object obj = ResourceManager.GetObject("DirIconSystem", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace File_System_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon DiskIcon1 {
+        internal static System.Drawing.Icon DriveIconDefault {
             get {
-                object obj = ResourceManager.GetObject("DiskIcon1", resourceCulture);
+                object obj = ResourceManager.GetObject("DriveIconDefault", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace File_System_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon FileIcon1 {
+        internal static System.Drawing.Icon FileIconBlank {
             get {
-                object obj = ResourceManager.GetObject("FileIcon1", resourceCulture);
+                object obj = ResourceManager.GetObject("FileIconBlank", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace File_System_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon FileIcon2 {
+        internal static System.Drawing.Icon FileIconDefault {
             get {
-                object obj = ResourceManager.GetObject("FileIcon2", resourceCulture);
+                object obj = ResourceManager.GetObject("FileIconDefault", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -113,9 +113,39 @@ namespace File_System_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon HardDisk {
+        internal static System.Drawing.Icon FileIconError {
             get {
-                object obj = ResourceManager.GetObject("HardDisk", resourceCulture);
+                object obj = ResourceManager.GetObject("FileIconError", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon FileIconOkay {
+            get {
+                object obj = ResourceManager.GetObject("FileIconOkay", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon FileIconText {
+            get {
+                object obj = ResourceManager.GetObject("FileIconText", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon HardDiskIconDefault {
+            get {
+                object obj = ResourceManager.GetObject("HardDiskIconDefault", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

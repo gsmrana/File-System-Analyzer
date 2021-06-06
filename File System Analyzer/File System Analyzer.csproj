@@ -114,11 +114,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HardDisk.ico" />
-    <None Include="Resources\DiskIcon1.ico" />
-    <None Include="Resources\DirIcon2.ico" />
-    <None Include="Resources\FileIcon2.ico" />
-    <None Include="Resources\DirIcon1.ico" />
-    <None Include="Resources\FileIcon1.ico" />
+    <None Include="Resources\DriveIconDefault.ico" />
+    <None Include="Resources\HardDiskIconDefault.ico" />
+    <None Include="Resources\FileIconText.ico" />
+    <None Include="Resources\FileIconDefault.ico" />
+    <None Include="Resources\FileIconBlank.ico" />
+    <None Include="Resources\DirIconSystem.ico" />
+    <None Include="Resources\DirIconDefault.ico" />
+    <None Include="Resources\FileIconError.ico" />
+    <None Include="Resources\FileIconOkay.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Megamind.IO.FileSystem\Megamind.IO.FileSystem.csproj">

@@ -5,4 +5,4 @@ A powerful tool for analyzing FAT12, FAT16, FAT32, exFAT and basic NTFS file sys
 - https://github.com/gsmrana/Megamind.IO.FileSystem
 
 ## FAT16 disk analysis
-![File System Analyzer](https://user-images.githubusercontent.com/51051655/76158286-9726f200-613e-11ea-80bd-6f5489e2e97e.png)
+![file-system-analyzer](https://user-images.githubusercontent.com/51051655/138837087-c72758e1-ca16-4ad0-ae00-98bf2fd89a5f.png)

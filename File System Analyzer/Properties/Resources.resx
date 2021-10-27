@@ -118,31 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DirIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DirIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_00_EntyIconUnknown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\00_EntyIconUnknown.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DirIconSystem" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DirIconSystem.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_01_HardDiskIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\01_HardDiskIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DriveIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DriveIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_02_DriveIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\02_DriveIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileIconBlank" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileIconBlank.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_03_DirIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\03_DirIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_04_DirIconSystem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\04_DirIconSystem.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileIconError" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileIconError.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_05_DirIconDeleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\05_DirIconDeleted.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileIconOkay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileIconOkay.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_06_DirIconCorrupted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\06_DirIconCorrupted.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileIconText" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileIconText.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_07_FileIconText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\07_FileIconText.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HardDiskIconDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HardDiskIconDefault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_08_FileIconBlank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\08_FileIconBlank.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_09_FileIconDeleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\09_FileIconDeleted.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_10_FileIconOkay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10_FileIconOkay.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_11_FileIconCorrupted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\11_FileIconCorrupted.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

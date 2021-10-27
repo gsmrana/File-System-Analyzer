@@ -87,7 +87,7 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonUpDir = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBoxDirPath = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButtonGoDir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonReloadDir = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -259,14 +259,14 @@
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.updateToolStripMenuItem.Text = "&Update...";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -603,7 +603,7 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonUpDir,
             this.toolStripTextBoxDirPath,
-            this.toolStripButtonGoDir});
+            this.toolStripButtonReloadDir});
             this.toolStrip2.Location = new System.Drawing.Point(0, 50);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(904, 25);
@@ -628,14 +628,14 @@
             this.toolStripTextBoxDirPath.ReadOnly = true;
             this.toolStripTextBoxDirPath.Size = new System.Drawing.Size(520, 25);
             // 
-            // toolStripButtonGoDir
+            // toolStripButtonReloadDir
             // 
-            this.toolStripButtonGoDir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGoDir.Image")));
-            this.toolStripButtonGoDir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGoDir.Name = "toolStripButtonGoDir";
-            this.toolStripButtonGoDir.Size = new System.Drawing.Size(63, 22);
-            this.toolStripButtonGoDir.Text = "Reload";
-            this.toolStripButtonGoDir.Click += new System.EventHandler(this.ToolStripButtonGoDir_Click);
+            this.toolStripButtonReloadDir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonReloadDir.Image")));
+            this.toolStripButtonReloadDir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonReloadDir.Name = "toolStripButtonReloadDir";
+            this.toolStripButtonReloadDir.Size = new System.Drawing.Size(63, 22);
+            this.toolStripButtonReloadDir.Text = "Reload";
+            this.toolStripButtonReloadDir.Click += new System.EventHandler(this.ToolStripButtonReloadDir_Click);
             // 
             // MainForm
             // 
@@ -722,7 +722,7 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton toolStripButtonUpDir;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxDirPath;
-        private System.Windows.Forms.ToolStripButton toolStripButtonGoDir;
+        private System.Windows.Forms.ToolStripButton toolStripButtonReloadDir;
         private System.Windows.Forms.ToolStripMenuItem showDeletedEntryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem debugLogToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuPartition;

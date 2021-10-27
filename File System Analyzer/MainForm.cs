@@ -30,15 +30,18 @@ namespace File_System_Analyzer
 
         enum EntryIcon
         {
-            FileIconDefault,
-            FileIconError,
-            FileIconBlank,
-            FileIconOkay,
-            FileIconText,
+            EntryIconUnknown,
+            HardDiskIconDefault,
+            DriveIconDefault,
             DirIconDefault,
             DirIconSystem,
-            DriveIconDefault,
-            HardDiskIconDefault
+            DirIconDeleted,
+            DirIconCorrupted,
+            FileIconText,
+            FileIconBlank,
+            FileIconDeleted,
+            FileIconOkay,
+            FileIconCorrupted
         }
 
         #endregion
@@ -56,11 +59,11 @@ namespace File_System_Analyzer
         readonly List<string> DiskImageFileNames = new List<string>();
         readonly Dictionary<EntryAttributes, EntryIcon> EntryIconMap = new Dictionary<EntryAttributes, EntryIcon>()
         {
-            { EntryAttributes.Archive, EntryIcon.FileIconOkay},
+            { EntryAttributes.Device, EntryIcon.HardDiskIconDefault},
+            { EntryAttributes.VolumeLabel, EntryIcon.DriveIconDefault},
             { EntryAttributes.Directory, EntryIcon.DirIconDefault},
             { EntryAttributes.HiddenSystemDir, EntryIcon.DirIconSystem},
-            { EntryAttributes.VolumeLabel, EntryIcon.DriveIconDefault},
-            { EntryAttributes.Device, EntryIcon.HardDiskIconDefault},
+            { EntryAttributes.Archive, EntryIcon.FileIconText},
         };
 
         #endregion
@@ -77,15 +80,18 @@ namespace File_System_Analyzer
             try
             {
                 // Need to maintain the sequence with EntryIcon enumeration
-                imageList1.Images.Add(Properties.Resources.FileIconDefault);
-                imageList1.Images.Add(Properties.Resources.FileIconError);
-                imageList1.Images.Add(Properties.Resources.FileIconBlank);
-                imageList1.Images.Add(Properties.Resources.FileIconOkay);
-                imageList1.Images.Add(Properties.Resources.FileIconText);
-                imageList1.Images.Add(Properties.Resources.DirIconDefault);
-                imageList1.Images.Add(Properties.Resources.DirIconSystem);
-                imageList1.Images.Add(Properties.Resources.DriveIconDefault);
-                imageList1.Images.Add(Properties.Resources.HardDiskIconDefault);
+                imageList1.Images.Add(Properties.Resources._00_EntyIconUnknown);
+                imageList1.Images.Add(Properties.Resources._01_HardDiskIconDefault);
+                imageList1.Images.Add(Properties.Resources._02_DriveIconDefault);
+                imageList1.Images.Add(Properties.Resources._03_DirIconDefault);
+                imageList1.Images.Add(Properties.Resources._04_DirIconSystem);
+                imageList1.Images.Add(Properties.Resources._05_DirIconDeleted);
+                imageList1.Images.Add(Properties.Resources._06_DirIconCorrupted);
+                imageList1.Images.Add(Properties.Resources._07_FileIconText);
+                imageList1.Images.Add(Properties.Resources._08_FileIconBlank);
+                imageList1.Images.Add(Properties.Resources._09_FileIconDeleted);
+                imageList1.Images.Add(Properties.Resources._10_FileIconOkay);
+                imageList1.Images.Add(Properties.Resources._11_FileIconCorrupted);
 
                 listView1.Columns.Add("Filename", 290);
                 listView1.Columns.Add("Attribute", 100);
@@ -188,12 +194,24 @@ namespace File_System_Analyzer
                 lvi.SubItems.Add("0x" + file.StartCluster.ToString("X8"));
                 lvi.SubItems.Add(file.FileSizeString);
                 lvi.SubItems.Add(file.EntryIndex.ToString());
-                lvi.ImageIndex = (int)EntryIcon.FileIconDefault;
+                lvi.ImageIndex = (int)EntryIcon.EntryIconUnknown;
+                lvis.Add(lvi);
 
                 // search for pre-map icon
                 if (EntryIconMap.ContainsKey(entryAttribute))
                 {
                     lvi.ImageIndex = (int)EntryIconMap[entryAttribute];
+                }
+
+                // check for deleted entry
+                if (file.EntryType == (byte)FatEntryType.DeletedEntry)
+                {
+                    if (entryAttribute == EntryAttributes.Directory ||
+                        entryAttribute == EntryAttributes.HiddenSystemDir)
+                        lvi.ImageIndex = (int)EntryIcon.DirIconDeleted;
+                    else if (entryAttribute == EntryAttributes.Archive)
+                        lvi.ImageIndex = (int)EntryIcon.FileIconDeleted;
+                    continue;
                 }
 
                 // check for empty file
@@ -203,7 +221,7 @@ namespace File_System_Analyzer
                 }
 
                 // check for invalid file entry
-                if (entryAttribute == EntryAttributes.Archive)
+                if (file.EntryType != (byte)FatEntryType.DotDirEntry)
                 {
                     long invalidCluster = ClusterNum.MaxExFAT;
                     long maxValidSize = int.MaxValue;
@@ -215,14 +233,16 @@ namespace File_System_Analyzer
                     }
 
                     if (((uint)file.StartCluster < ValidClusterNumberStart) ||
-                       ((uint)file.StartCluster >= invalidCluster) ||
-                       ((uint)file.FileSize >= maxValidSize))
+                        ((uint)file.StartCluster >= invalidCluster) ||
+                        ((uint)file.FileSize >= maxValidSize))
                     {
-                        lvi.ImageIndex = (int)EntryIcon.FileIconError;
+                        if (entryAttribute == EntryAttributes.Directory ||
+                            entryAttribute == EntryAttributes.HiddenSystemDir)
+                            lvi.ImageIndex = (int)EntryIcon.DirIconCorrupted;
+                        else if (entryAttribute == EntryAttributes.Archive)
+                            lvi.ImageIndex = (int)EntryIcon.FileIconCorrupted;
                     }
                 }
-
-                lvis.Add(lvi);
             }
 
             Invoke(new MethodInvoker(() =>
@@ -546,6 +566,7 @@ namespace File_System_Analyzer
         {
             _showdelentry = showDeletedEntryToolStripMenuItem.Checked;
             if (_fileManager != null) _fileManager.Partitions[_selpartition].IncludeDeletedEntry = _showdelentry;
+            toolStripButtonReloadDir.PerformClick();
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -775,7 +796,7 @@ namespace File_System_Analyzer
             }
         }
 
-        private void ToolStripButtonGoDir_Click(object sender, EventArgs e)
+        private void ToolStripButtonReloadDir_Click(object sender, EventArgs e)
         {
             try
             {

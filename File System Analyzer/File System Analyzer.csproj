@@ -114,15 +114,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HardDisk.ico" />
-    <None Include="Resources\DriveIconDefault.ico" />
-    <None Include="Resources\HardDiskIconDefault.ico" />
-    <None Include="Resources\FileIconText.ico" />
-    <None Include="Resources\FileIconDefault.ico" />
-    <None Include="Resources\FileIconBlank.ico" />
-    <None Include="Resources\DirIconSystem.ico" />
-    <None Include="Resources\DirIconDefault.ico" />
-    <None Include="Resources\FileIconError.ico" />
-    <None Include="Resources\FileIconOkay.ico" />
+    <Content Include="Resources\00_EntyIconUnknown.ico" />
+    <Content Include="Resources\01_HardDiskIconDefault.ico" />
+    <Content Include="Resources\02_DriveIconDefault.ico" />
+    <Content Include="Resources\03_DirIconDefault.ico" />
+    <Content Include="Resources\04_DirIconSystem.ico" />
+    <Content Include="Resources\05_DirIconDeleted.ico" />
+    <Content Include="Resources\06_DirIconCorrupted.ico" />
+    <Content Include="Resources\07_FileIconText.ico" />
+    <Content Include="Resources\08_FileIconBlank.ico" />
+    <Content Include="Resources\09_FileIconDeleted.ico" />
+    <Content Include="Resources\10_FileIconOkay.ico" />
+    <Content Include="Resources\11_FileIconCorrupted.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Megamind.IO.FileSystem\Megamind.IO.FileSystem.csproj">

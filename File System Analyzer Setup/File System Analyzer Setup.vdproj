@@ -76,19 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_629F41A71A10E76E9091063D16D1F19C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FF48DFBC7CCAF7987268D54F84DA9873"
+        "OwnerKey" = "8:_BE97A83CDC3B24D0D246F1D0E4E93505"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,7 +88,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BE97A83CDC3B24D0D246F1D0E4E93505"
+        "OwnerKey" = "8:_FF48DFBC7CCAF7987268D54F84DA9873"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_629F41A71A10E76E9091063D16D1F19C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -267,11 +267,6 @@
             "AssemblyAsmDisplayName" = "8:netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51"
                 "ScatterAssemblies"
                 {
-                    "_BB36A1C80DCF8874C5413A026D9539B7"
-                    {
-                    "Name" = "8:netstandard.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:netstandard.dll"
             "TargetName" = "8:"
@@ -329,11 +324,6 @@
             "AssemblyAsmDisplayName" = "8:Megamind.IO.FileSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C173A9BEF5B54438F0E7DF3E0A435C24"
-                    {
-                    "Name" = "8:Megamind.IO.FileSystem.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Megamind.IO.FileSystem.dll"
             "TargetName" = "8:"
@@ -481,7 +471,7 @@
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:TRUE"
+        "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:GSM Project"
         "ARPHELPTELEPHONE" = "8:"
@@ -605,20 +595,6 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
             "Folder" = "8:_D1E7D94885594F9BBB654A896A89A786"
-            "WorkingFolder" = "8:_E791065CF5DD4347BF009281793FA24E"
-            "Icon" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9D0D50689B4E4AC2B108A9D261BE0BE4"
-            {
-            "Name" = "8:File System Analyzer"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:32512"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
-            "Folder" = "8:_E079D58E10F44A44A2DB090877928EC2"
             "WorkingFolder" = "8:_E791065CF5DD4347BF009281793FA24E"
             "Icon" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
             "Feature" = "8:"
@@ -1024,7 +1000,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_47FB47988E834CAB8BAD0FAA95AF436A"
             {
-            "SourcePath" = "8:..\\File System Analyzer\\obj\\Release\\File System Analyzer.exe"
+            "SourcePath" = "8:..\\File System Analyzer\\obj\\Debug\\File System Analyzer.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E791065CF5DD4347BF009281793FA24E"

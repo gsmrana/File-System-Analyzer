@@ -46,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
-        "OwnerKey" = "8:_C173A9BEF5B54438F0E7DF3E0A435C24"
+        "OwnerKey" = "8:_F8B376EC06EE39B5FEB3286BAA18FE43"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,7 +57,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C173A9BEF5B54438F0E7DF3E0A435C24"
+        "MsmKey" = "8:_F8B376EC06EE39B5FEB3286BAA18FE43"
         "OwnerKey" = "8:_47FB47988E834CAB8BAD0FAA95AF436A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -76,19 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BE97A83CDC3B24D0D246F1D0E4E93505"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4F13C4994E4D5FE9DC1ABD4B410928FC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FF48DFBC7CCAF7987268D54F84DA9873"
+        "OwnerKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,7 +88,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BB36A1C80DCF8874C5413A026D9539B7"
+        "OwnerKey" = "8:_FF48DFBC7CCAF7987268D54F84DA9873"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4F13C4994E4D5FE9DC1ABD4B410928FC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BE97A83CDC3B24D0D246F1D0E4E93505"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -267,6 +267,11 @@
             "AssemblyAsmDisplayName" = "8:netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51"
                 "ScatterAssemblies"
                 {
+                    "_BB36A1C80DCF8874C5413A026D9539B7"
+                    {
+                    "Name" = "8:netstandard.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:netstandard.dll"
             "TargetName" = "8:"
@@ -317,13 +322,18 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C173A9BEF5B54438F0E7DF3E0A435C24"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F8B376EC06EE39B5FEB3286BAA18FE43"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Megamind.IO.FileSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_F8B376EC06EE39B5FEB3286BAA18FE43"
+                    {
+                    "Name" = "8:Megamind.IO.FileSystem.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Megamind.IO.FileSystem.dll"
             "TargetName" = "8:"
@@ -464,15 +474,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:File System Analyzer"
-        "ProductCode" = "8:{8B56FED9-1435-482B-8FF8-347EAAB129EF}"
-        "PackageCode" = "8:{4AF9F078-0DD9-4AED-BA0D-C661146D8D59}"
+        "ProductCode" = "8:{D3D63607-A3EE-4C6C-81A8-E32C23FE6C54}"
+        "PackageCode" = "8:{917706D9-C0ED-40CE-837E-18BCE64A2DDE}"
         "UpgradeCode" = "8:{3BDC434F-E7EA-4412-8E1C-D707F55F32B2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.3"
         "Manufacturer" = "8:GSM Project"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
